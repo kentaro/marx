@@ -13,7 +13,7 @@ Another lightweight text formatter.
 
 Marx is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
 
-In comparison to Markdown, Marx is more preferable in terms of:
+In comparison to Markdown:url=https://daringfireball.net/projects/markdown/, Marx is more preferable in terms of:
 
 - No multiple notations for same things
 - Easy-to-write URL syntax
@@ -26,7 +26,7 @@ Although designing languages is inevitable to captured by personal preference, I
 
 Marx is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
 
-In comparison to Markdown, Marx is more preferable in terms of:
+In comparison to [Markdown](https://daringfireball.net/projects/markdown/), Marx is more preferable in terms of:
 
 * No multiple notations for same things
 * Easy-to-write URL syntax
@@ -139,6 +139,18 @@ Above will be converted into below:
 ```
 
 ### Inline Nodes
+
+#### Text with URL
+
+```
+"Example Page":url=https://example.com/
+```
+
+Above will be converted into below:
+
+```
+<a href="https://example.com/">Example Page</a>
+```
 
 #### URL
 
