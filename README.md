@@ -30,7 +30,7 @@ Above will be converted into below:
 
 An ordered list starts with `+` with arbitrary proceeding spaces. Indentation indicates hierarchy of the list.
 
-``
+```
 + foo
   + bar
   + baz
