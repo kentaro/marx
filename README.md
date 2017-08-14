@@ -4,7 +4,7 @@ Another lightweight text formatter.
 
 ## Design
 
-Suzumi is designed to achieve visually excellent in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
+Suzumi is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
 
 ### Block Nodes
 
