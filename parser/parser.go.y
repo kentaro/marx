@@ -1,5 +1,21 @@
 %{
+
 package parser
+
+import (
+    "io"
+)
+
+func Parse(in io.Reader) (Document, error) {
+	lex := NewLexer(in)
+	if ok := yyParse(lex); ok == 0 {
+		doc := lex.result
+		return doc, nil
+	} else {
+		doc := lex.result
+		return doc, lex.err
+	}
+}
 
 %}
 
@@ -71,7 +87,7 @@ heading_markers:
 paragraph:
     empty_line
     {
-        $$ = Paragraph{InlineNodes: []InlineNode}        
+        $$ = Paragraph{InlineNodes: []InlineNode{}}        
     }
     |
     inline_nodes CR

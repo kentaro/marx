@@ -1,20 +1,34 @@
-
 //line parser/parser.go.y:2
 package parser
-import __yyfmt__ "fmt"
-//line parser/parser.go.y:2
-		
 
-//line parser/parser.go.y:6
-type yySymType struct{
-	yys int
-  token        Token
-  document     Document
-  block_nodes  []BlockNode
-  block_node   BlockNode
-  inline_nodes []InlineNode
-  inline_node  InlineNode
-  depth        int8
+import __yyfmt__ "fmt"
+
+//line parser/parser.go.y:3
+import (
+	"io"
+)
+
+func Parse(in io.Reader) (Document, error) {
+	lex := NewLexer(in)
+	if ok := yyParse(lex); ok == 0 {
+		doc := lex.result
+		return doc, nil
+	} else {
+		doc := lex.result
+		return doc, lex.err
+	}
+}
+
+//line parser/parser.go.y:22
+type yySymType struct {
+	yys          int
+	token        Token
+	document     Document
+	block_nodes  []BlockNode
+	block_node   BlockNode
+	inline_nodes []InlineNode
+	inline_node  InlineNode
+	depth        int8
 }
 
 const TEXT = 57346
@@ -35,8 +49,7 @@ const yyEofCode = 1
 const yyErrCode = 2
 const yyInitialStackSize = 16
 
-//line parser/parser.go.y:103
-
+//line parser/parser.go.y:119
 
 //line yacctab:1
 var yyExca = [...]int{
@@ -101,8 +114,7 @@ var yyErrorMessages = [...]struct {
 	state int
 	token int
 	msg   string
-}{
-}
+}{}
 
 //line yaccpar:1
 
@@ -436,84 +448,84 @@ yydefault:
 	switch yynt {
 
 	case 1:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:30
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:46
 		{
-	        yyVAL.document = Document{BlockNodes: []BlockNode{yyDollar[1].block_nodes}}
-	        yylex.(*Lexer).result = yyVAL.document
-	    }
+			yyVAL.document = Document{BlockNodes: []BlockNode{yyDollar[1].block_nodes}}
+			yylex.(*Lexer).result = yyVAL.document
+		}
 	case 2:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:37
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:53
 		{
-	        yyVAL.block_nodes = []BlockNode{yyDollar[1].block_node}        
-	    }
+			yyVAL.block_nodes = []BlockNode{yyDollar[1].block_node}
+		}
 	case 3:
-		yyDollar = yyS[yypt-2:yypt+1]
-		//line parser/parser.go.y:41
-		{
-	        yyVAL.block_nodes = append(yyDollar[1].block_nodes, yyDollar[2].block_node)
-	    }
-	case 4:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:47
-		{
-	        yyVAL.block_node = yyDollar[1].block_node
-	    }
-	case 5:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:51
-		{
-	        yyVAL.block_node = yyDollar[1].block_node        
-	    }
-	case 6:
-		yyDollar = yyS[yypt-3:yypt+1]
+		yyDollar = yyS[yypt-2 : yypt+1]
 		//line parser/parser.go.y:57
 		{
-	        yyVAL.block_node = Heading{Level: yyDollar[1].depth, InlineNodes: yyDollar[2].inline_nodes}        
-	    }
-	case 7:
-		yyDollar = yyS[yypt-1:yypt+1]
+			yyVAL.block_nodes = append(yyDollar[1].block_nodes, yyDollar[2].block_node)
+		}
+	case 4:
+		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser/parser.go.y:63
 		{
-	        yyVAL.depth = 1
-	    }
-	case 8:
-		yyDollar = yyS[yypt-2:yypt+1]
+			yyVAL.block_node = yyDollar[1].block_node
+		}
+	case 5:
+		yyDollar = yyS[yypt-1 : yypt+1]
 		//line parser/parser.go.y:67
 		{
-	        yyVAL.depth = yyDollar[2].depth + 1
-	    }
-	case 9:
-		yyDollar = yyS[yypt-1:yypt+1]
+			yyVAL.block_node = yyDollar[1].block_node
+		}
+	case 6:
+		yyDollar = yyS[yypt-3 : yypt+1]
 		//line parser/parser.go.y:73
 		{
-	        yyVAL.block_node = Paragraph{InlineNodes: []InlineNode}        
-	    }
+			yyVAL.block_node = Heading{Level: yyDollar[1].depth, InlineNodes: yyDollar[2].inline_nodes}
+		}
+	case 7:
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:79
+		{
+			yyVAL.depth = 1
+		}
+	case 8:
+		yyDollar = yyS[yypt-2 : yypt+1]
+		//line parser/parser.go.y:83
+		{
+			yyVAL.depth = yyDollar[2].depth + 1
+		}
+	case 9:
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:89
+		{
+			yyVAL.block_node = Paragraph{InlineNodes: []InlineNode{}}
+		}
 	case 10:
-		yyDollar = yyS[yypt-2:yypt+1]
-		//line parser/parser.go.y:78
+		yyDollar = yyS[yypt-2 : yypt+1]
+		//line parser/parser.go.y:94
 		{
-	        yyVAL.block_node = Paragraph{InlineNodes: yyDollar[1].inline_nodes}
-	    }
+			yyVAL.block_node = Paragraph{InlineNodes: yyDollar[1].inline_nodes}
+		}
 	case 12:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:86
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:102
 		{
-	        yyVAL.inline_nodes = []InlineNode{yyDollar[1].inline_node}
-	    }
+			yyVAL.inline_nodes = []InlineNode{yyDollar[1].inline_node}
+		}
 	case 13:
-		yyDollar = yyS[yypt-2:yypt+1]
-		//line parser/parser.go.y:90
+		yyDollar = yyS[yypt-2 : yypt+1]
+		//line parser/parser.go.y:106
 		{
-	        yyVAL.inline_nodes = append(yyDollar[1].inline_nodes, yyDollar[2].inline_node)
-	    }
+			yyVAL.inline_nodes = append(yyDollar[1].inline_nodes, yyDollar[2].inline_node)
+		}
 	case 15:
-		yyDollar = yyS[yypt-1:yypt+1]
-		//line parser/parser.go.y:99
+		yyDollar = yyS[yypt-1 : yypt+1]
+		//line parser/parser.go.y:115
 		{
-	        yyVAL.inline_node = Text{Literal: yyDollar[1].token.literal}
-	    }
+			yyVAL.inline_node = Text{Literal: yyDollar[1].token.literal}
+		}
 	}
 	goto yystack /* stack new state and value */
 }
