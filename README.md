@@ -8,6 +8,24 @@ Suzumi is designed to achieve visual excellence when written in itself without r
 
 ### Block Nodes
 
+#### Heading
+
+Headings are denoted by `@` and the number of the character indicates level of them.
+
+```
+@ Heading1
+@@ Heading2
+@@@ Heading3
+```
+
+Above will be converted into below:
+
+```
+<h1>Heading1</h1>
+<h2>Heading2</h2>
+<h3>Heading3</h3>
+```
+
 #### Paragraph
 
 Suzumi only supports paragraph as a block of sentences. That is, it doesn't support line breaking signified by `<br>` tag in HTML. Which is because line breaking is unnecessary for paragraph writing.
