@@ -1,10 +1,10 @@
-# Suzumi
+# Marx
 
 Another lightweight text formatter.
 
 ## Design
 
-Suzumi is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
+Marx is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
 
 ### Block Nodes
 
@@ -28,7 +28,7 @@ Above will be converted into below:
 
 #### Paragraph
 
-Suzumi only supports paragraph as a block of sentences. That is, it doesn't support line breaking signified by `<br>` tag in HTML. Which is because line breaking is unnecessary for paragraph writing.
+Marx only supports paragraph as a block of sentences. That is, it doesn't support line breaking signified by `<br>` tag in HTML. Which is because line breaking is unnecessary for paragraph writing.
 
 ```
 Vladimir Vladimirovich Nabokov was a Russian-American novelist and entomologist. His first nine novels were in Russian, but he achieved international prominence after he began writing English prose.
