@@ -2,9 +2,37 @@
 
 Another lightweight text formatter.
 
+## Synopsis
+
+```
+@ Marx
+
+Another lightweight text formatter.
+
+@@ Design
+
+Marx is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
+
+In comparison to Markdown, Marx is more preferable in terms of:
+
+- No multiple notations for same things
+- Easy-to-write URL syntax
+- Better-looking than Markdown
+
+Although designing languages is inevitable to captured by personal preference, I believe such strengths described above can address issues of those who are not satisfied with existing text formatters.
+```
+
 ## Design
 
 Marx is designed to achieve visual excellence when written in itself without rendering to some other format, and support basic notation for paragraph writing of Web text.
+
+In comparison to Markdown, Marx is more preferable in terms of:
+
+* No multiple notations for same things
+* Easy-to-write URL syntax
+* Better-looking than Markdown
+
+Although designing languages is inevitable to captured by personal preference, I believe such strengths described above can address issues of those who are not satisfied with existing text formatters.
 
 ### Block Nodes
 
